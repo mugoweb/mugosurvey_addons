@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<software>
+    <dependencies>
+        <extends>
+            <extension name="ezsurvey" />
+        </extends>
+    </dependencies>
+    <metadata>
+        <name>&lt;a href="http://www.mugo.ca/Products/Mugo-Survey-Addons"&gt;Mugo Survey Addons&lt;/a&gt;</name>
+        <version>2.1</version>
+        <copyright>Copyright (C) 2012 &lt;a href="http://www.mugo.ca"&gt;Mugo Web&lt;/a&gt;</copyright>
+        <license>GNU General Public License v2.0</license>
+    </metadata>
+</software>

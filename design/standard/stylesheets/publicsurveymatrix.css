@@ -1,0 +1,29 @@
+#matrixform
+{
+    width: 600px;
+    overflow: auto;
+}
+#matrixform
+{
+    width: 100%;
+    overflow: auto;
+}
+#matrixform table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#matrixform table {
+    border: 0;
+}
+#matrixform td, #matrixform th {
+    border: 1px solid #ccc;
+    padding: 2px 4px;
+    text-align: center;
+}
+#matrixform th {
+    font-weight: bold;
+}
+#matrixform td.full
+{
+    text-align: left;
+}

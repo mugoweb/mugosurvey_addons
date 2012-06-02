@@ -1,0 +1,24 @@
+Changes from Mugo Survey Addons 2.0 to 2.1
+
+- Added a new RSVP code question type to force specific text entry before the survey answer is accepted
+- Added mail templates for all question types
+
+Changes from Mugo Survey Addons 1.0 to 2.0
+
+- Removed the classes folder that contained the PHP classes for the new question types and moved it back to:
+  extension/mugosurvey_addons/modules/survey/classes/ezsurvey<questiontype>.php since this is where eZ Survey looks
+- Fixed a bug in settings/ezsurvey.ini.append.php that prevented the questions from loading properly.
+- Fixed some warning outputs when non-mandatory matrix questions are not filled in.
+- Fixed the error message display when a mandatory field is skipped.
+- Added a Country question type with a dropdown list of countries populated by eZ Publish's country.ini
+- Added a State question type with a dropdown list of states populated by:
+  extension/mugosurvey_addons/settings/state.ini.append.php
+- Added a new Page break question type to enable surveys to be paginated on the public side.
+
+Changes for Mugo Survey Addons 1.0
+
+- First public release.
+
+Features:
+- Added new Matrix question type.
+- Added a specific Matrix results table display in the survey overview.

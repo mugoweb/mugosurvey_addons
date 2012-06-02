@@ -1,0 +1,23 @@
+#matrixtable
+{
+    width: 700px;
+    min-height: 100px;
+    overflow: auto;
+}
+#matrixtable input
+{
+    width: 100px;
+}
+#matrixtable td.full
+{
+    font-weight: bold;
+}
+#matrixform td, #matrixform th {
+    border: 1px solid #ccc;
+    padding: 2px 4px;
+    text-align: center;
+}
+#matrixform table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
