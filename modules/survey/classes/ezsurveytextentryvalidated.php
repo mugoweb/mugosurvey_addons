@@ -21,46 +21,6 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
         $this->eZSurveyEntry( $row );
     }
 
-    function answer()
-    {
-        if ( $this->Answer !== false )
-            return $this->Answer;
-
-        $http = eZHTTPTool::instance();
-        $prefix = eZSurveyType::PREFIX_ATTRIBUTE;
-        $postSurveyAnswer = $prefix . '_ezsurvey_answer_' . $this->ID . '_' . $this->contentObjectAttributeID();
-        if ( $http->hasPostVariable( $postSurveyAnswer ) )
-        {
-            $surveyAnswer = $http->postVariable( $postSurveyAnswer );
-            return $surveyAnswer;
-        }
-
-        if ( $this->Text3 == 'user_email' )
-        {
-            $user = eZUser::currentUser();
-            if ( get_class( $user ) == 'eZUser' and
-                 $user->isLoggedIn() === true )
-            {
-                return $user->attribute( 'email' );
-            }
-        }
-        else if ( $this->Text3 == 'user_name' )
-        {
-            $user = eZUser::currentUser();
-            if ( get_class( $user ) == 'eZUser' and
-                 $user->isLoggedIn() === true )
-            {
-                $contentObject = $user->attribute( 'contentobject' );
-                if ( get_class( $contentObject ) == 'eZContentObject' )
-                {
-                    return $contentObject->attribute( 'name' );
-                }
-            }
-        }
-
-        return $this->Default;
-    }
-
     function processViewActions( &$validation, $params )
     {
         $http = eZHTTPTool::instance();
@@ -100,56 +60,6 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
         $variableArray['answer'] = trim ( $http->postVariable( $postSurveyAnswer ) );
 
         return $variableArray;
-    }
-
-    function processEditActions( &$validation, $params )
-    {
-        $http = eZHTTPTool::instance();
-        $prefix = eZSurveyType::PREFIX_ATTRIBUTE;
-        $attributeID = $params['contentobjectattribute_id'];
-
-        $postQuestionText = $prefix . '_ezsurvey_question_' . $this->ID . '_text_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionText ) and
-             $http->postVariable( $postQuestionText ) != $this->Text )
-            $this->setAttribute( 'text', $http->postVariable( $postQuestionText ) );
-
-        $postQuestionText2 = $prefix . '_ezsurvey_question_' . $this->ID . '_text2_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionText2 ) and
-             $http->postVariable( $postQuestionText2 ) != $this->Text2 )
-            $this->setAttribute( 'text2', $http->postVariable( $postQuestionText2 ) );
-
-        $postQuestionText3 = $prefix . '_ezsurvey_question_' . $this->ID . '_text3_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionText3 ) and
-             $http->postVariable( $postQuestionText3 ) != $this->Text3 )
-            $this->setAttribute( 'text3', $http->postVariable( $postQuestionText3 ) );
-
-        $postQuestionNum = $prefix . '_ezsurvey_question_' . $this->ID . '_num_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionNum ) and
-             $http->postVariable( $postQuestionNum ) != $this->Num )
-            $this->setAttribute( 'num', $http->postVariable( $postQuestionNum ) );
-
-        $postQuestionNum2 = $prefix . '_ezsurvey_question_' . $this->ID . '_num2_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionNum2 ) and
-             $http->postVariable( $postQuestionNum2 ) != $this->Num2 )
-            $this->setAttribute( 'num2', $http->postVariable( $postQuestionNum2 ) );
-
-        $postQuestionMandatoryHidden = $prefix . '_ezsurvey_question_' . $this->ID . '_mandatory_hidden_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionMandatoryHidden ) )
-        {
-            $postQuestionMandatory = $prefix . '_ezsurvey_question_' . $this->ID . '_mandatory_' . $attributeID;
-            if ( $http->hasPostVariable( $postQuestionMandatory ) )
-                $newMandatory = 1;
-            else
-                $newMandatory = 0;
-
-            if ( $newMandatory != $this->Mandatory )
-                $this->setAttribute( 'mandatory', $newMandatory );
-        }
-
-        $postQuestionDefault = $prefix . '_ezsurvey_question_' . $this->ID . '_default_' . $attributeID;
-        if ( $http->hasPostVariable( $postQuestionDefault ) and
-             $http->postVariable( $postQuestionDefault ) != $this->Default )
-            $this->setAttribute( 'default_value', $http->postVariable( $postQuestionDefault ) );
     }
 }
 
