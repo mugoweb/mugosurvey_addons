@@ -5,6 +5,7 @@
 class eZSurveyTextEntryValidated extends eZSurveyEntry
 {
     public $DataTypeValidator;
+    public $ValidationType;
 
     function __construct( $row = false )
     {
@@ -82,7 +83,7 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
         $postSurveyAnswer = $prefix . '_ezsurvey_answer_' . $this->ID . '_' . $attributeID;
         if ( strlen( trim ( $http->postVariable( $postSurveyAnswer ) ) ) > 0 )
         {
-            $this->DataTypeValidator->setValidationType( $this->attribute( 'validation_type' ) );
+            $this->DataTypeValidator->setValidationType( $this->attribute( 'text2' ) );
 
             if( !$this->DataTypeValidator->validate( trim ( $http->postVariable( $postSurveyAnswer ) ) ) )
             {
@@ -100,7 +101,7 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
 
         return $variableArray;
     }
-    
+
     function processEditActions( &$validation, $params )
     {
         $http = eZHTTPTool::instance();
