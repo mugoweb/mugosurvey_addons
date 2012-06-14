@@ -79,6 +79,57 @@ INSTALLATION
 4/ Create or edit an object of the Survey class (or a custom one that uses the Survey datatype).
    You should now be able to add the question types provided by this extension.
 
+USING THE "Text Entry (Validated)" QUESTION TYPE
+================================================
+The mugo survey addons extension comes with a question type that only accepts validated input. This question type is called
+"Text Entry (Validated)" in the eZ Publish admin panel. The php class is called "ezsurveytextentryvalidated.php". This question type
+uses the validation classes in mugosurvey_addons/modules/survey/classes/validation to validate answers.
+
+The validation methods used by this question type can be extended. Currently only 2 validation types exist:
+MugoSurveyAlphabeticalValidationType and MugoSurveyAlphanumericValidationType.
+
+1) Using the question type
+        If, for example, one of your surveys has a questions that should only have
+        letters or spaces in the value (no numbers, etc.):
+            a. go to the survey to edit and add a "Text Entry (Validated)" attribute
+            b. for the newly added question, select the "Only letters or spaces" option for that specific question's "Validation Type"
+
+2) Extending & writing your own validation
+        To write your own validation method for the Validated Text Entry question type:
+            a. In the mugosurveyvalidators.ini settings file, add your validation method, description and class name
+                to the arrays: ValidationTypes[], ValidationTypesDescriptions[], ValidationTypesClasses[]
+            b. Create the class with the name you specified in the ValidationTypesClasses[] array,
+                inside your extension's classes folder. Your class has to override the "validate()"
+                and your own "validate()" function must set the validation error messages. Here's an example
+                of a validation type class, that validates input via a simple regular expression:
+                ----------------------------------------------------------------------------------------------
+                class SampleSurveyValidationType extends MugoSurveyValidationType {
+                    public function validate( $text )
+                    {
+                        //your regular expression
+                        $acceptedExpression = "<your-regex>";
+
+                        //you can have multiple error messages, depending on your validation method;
+                        //when using regular expressions, one error message is enough
+                        $errorMessage       = "<your-error-message-when-something-goes-wrong>";
+
+                        //if the input is matched to the accepted expression and return true
+                        if( preg_match( $acceptedExpression, $text ) )
+                        {
+                            return true;
+                        }
+                        //otherwise, set the class errormessage and return false
+                        else
+                        {
+                            $this->errorMessage = ezpI18n::tr( 'survey', $errorMessage );
+                            return false;
+                        }
+                    }
+                }
+                ===============================================================================================
+            c. Regenerate the autoloads array
+            d. The new validation type should now be in the system, available to all your "Text Entry (Validated)" questions
+
 NOTES
 ======================
 
