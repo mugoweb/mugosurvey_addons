@@ -22,8 +22,8 @@
 </div>
 
 {* Validation Type. *}
-{def $validation_options        = ezini("Validation", "ValidationTypes", "mugoaddondatatypes.ini")}
-{def $validation_descriptions   = ezini("Validation", "ValidationTypesDescriptions", "mugoaddondatatypes.ini")}
+{def $validation_options        = ezini("Validation", "ValidationTypes", "mugosurveyvalidators.ini")}
+{def $validation_descriptions   = ezini("Validation", "ValidationTypesDescriptions", "mugosurveyvalidators.ini")}
 <div class="block">
     <label>{'Validation Type'|i18n( 'survey' )}:</label>
     <div class="labelbreak"></div>

@@ -10,7 +10,7 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
 
     function __construct( $row = false )
     {
-        $this->DataTypeValidator    = new MugoAddonDatatypeValidator();
+        $this->DataTypeValidator    = new MugoSurveyDatatypeValidator();
 
         if ( !isset( $row['num'] ) )
             $row['num'] = 70;
@@ -52,7 +52,7 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
                 $validation['errors'][] = array( 'message' => ezpI18n::tr( 'survey', $this->DataTypeValidator->getErrorMessage(), null,
                                                 array( '%number' => $this->questionNumber() ) ),
                                                         'question_number' => $this->questionNumber(),
-                                                'code' => 'general_answer_number_as_well',
+                                                'code' => 'does_not_match_validation_rule',
                                                 'question' => $this );
             }
         }
@@ -64,5 +64,6 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
     }
 }
 
-eZSurveyQuestion::registerQuestionType( ezPI18n::tr( 'Text Entry (Validated)' ), 'TextEntryValidated' );
+eZSurveyQuestion::registerQuestionType( ezPI18n::tr( 'survey','Text Entry (Validated)' ), 'TextEntryValidated' );
 ?>
+

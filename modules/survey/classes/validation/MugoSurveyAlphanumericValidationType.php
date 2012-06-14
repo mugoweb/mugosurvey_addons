@@ -4,7 +4,7 @@
  *
  * @author mugodev
  */
-class MugoAddonAlphanumericValidationType extends MugoAddonValidationType {
+class MugoSurveyAlphanumericValidationType extends MugoSurveyValidationType {
 
     public function validate( $text )
     {
@@ -27,3 +27,4 @@ class MugoAddonAlphanumericValidationType extends MugoAddonValidationType {
 }
 
 ?>
+

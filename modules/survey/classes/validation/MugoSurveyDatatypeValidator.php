@@ -1,12 +1,12 @@
 <?php
 /**
  * Is used to execute the validation on the Text Entry (validated) eZ Survey
- * question type. It uses the custom MugoAddonValidationType php class to run
+ * question type. It uses the custom MugoSurveyValidationType php class to run
  * the validation.
  *
  * @author mugodev
  */
-class MugoAddonDatatypeValidator
+class MugoSurveyDatatypeValidator
 {
     /**
      * @var MugoValidationType
@@ -24,7 +24,7 @@ class MugoAddonDatatypeValidator
     {
         if($validationType != null)
         {
-            $iniSettings                = ezINI::instance( "mugoaddondatatypes.ini" );
+            $iniSettings                = ezINI::instance( "mugosurveyvalidators.ini" );
             $validationTypeClassArray   = $iniSettings->variable( "Validation", "ValidationTypesClasses" );
             $validationTypeClass        = $validationTypeClassArray[$validationType];
             $this->validationType   = new $validationTypeClass();
@@ -56,3 +56,4 @@ class MugoAddonDatatypeValidator
 }
 
 ?>
+

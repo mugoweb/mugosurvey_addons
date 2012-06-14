@@ -2,11 +2,11 @@
 
 /**
  * Specifies the functions needed by any class used as a ValidationType in the
- * MugoAddonDatatypeValidator class in order to validate the value of a datatype.
+ * MugoSurveyDatatypeValidator class in order to validate the value of a datatype.
  *
  * @author mugodev
  */
-abstract class MugoAddonValidationType {
+abstract class MugoSurveyValidationType {
 
     /**
      * This message should always be set by the validate() function
@@ -37,3 +37,4 @@ abstract class MugoAddonValidationType {
 }
 
 ?>
+
