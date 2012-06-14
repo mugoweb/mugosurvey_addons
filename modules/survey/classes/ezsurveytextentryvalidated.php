@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author mugodev
  */
@@ -63,5 +64,5 @@ class eZSurveyTextEntryValidated extends eZSurveyEntry
     }
 }
 
-eZSurveyQuestion::registerQuestionType( 'Text Entry (Validated)', 'TextEntryValidated' );
+eZSurveyQuestion::registerQuestionType( ezPI18n::tr( 'Text Entry (Validated)' ), 'TextEntryValidated' );
 ?>

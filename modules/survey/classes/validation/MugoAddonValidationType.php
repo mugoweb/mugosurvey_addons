@@ -2,7 +2,7 @@
 
 /**
  * Specifies the functions needed by any class used as a ValidationType in the
- * MugoDatatypeValidator class in order to validate the value of a datatype.
+ * MugoAddonDatatypeValidator class in order to validate the value of a datatype.
  *
  * @author mugodev
  */

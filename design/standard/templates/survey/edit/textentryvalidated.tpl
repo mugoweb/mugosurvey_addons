@@ -25,7 +25,7 @@
 {def $validation_options        = ezini("Validation", "ValidationTypes", "mugoaddondatatypes.ini")}
 {def $validation_descriptions   = ezini("Validation", "ValidationTypesDescriptions", "mugoaddondatatypes.ini")}
 <div class="block">
-    <label>{'Validation Type'|i18n( 'mugovalidatedstring' )}:</label>
+    <label>{'Validation Type'|i18n( 'survey' )}:</label>
     <div class="labelbreak"></div>
     <select name="{$prefix_attribute}_ezsurvey_question_{$question.id}_text2_{$attribute_id}">
         {foreach $validation_options as $option}

@@ -20,7 +20,7 @@ class MugoAddonAlphabeticalValidationType extends MugoAddonValidationType {
         else
         {
             //otherwise, set the class errormessage and return false
-            $this->errorMessage = ezpI18n::tr( 'mugovalidatedstring', $errorMessage );
+            $this->errorMessage = ezpI18n::tr( 'survey', $errorMessage );
             return false;
         }
     }

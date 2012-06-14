@@ -1,7 +1,7 @@
 <?php
 /**
- * Is used to execute the validation on the mugovalidatedstring eZ Publish
- * datatype. It uses the custom MugoValidationType php class to run
+ * Is used to execute the validation on the Text Entry (validated) eZ Survey
+ * question type. It uses the custom MugoAddonValidationType php class to run
  * the validation.
  *
  * @author mugodev
