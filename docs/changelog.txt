@@ -2,6 +2,7 @@ Changes from Mugo Survey Addons 2.0 to 2.1
 
 - Added a new RSVP code question type to force specific text entry before the survey answer is accepted
 - Added mail templates for all question types
+- Added an extensible Validated Text question type
 
 Changes from Mugo Survey Addons 1.0 to 2.0
 
