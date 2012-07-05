@@ -10,5 +10,5 @@ QuestionTypeList[]=country
 QuestionTypeList[]=state
 QuestionTypeList[]=pagebreak
 QuestionTypeList[]=rsvpcode
-
+QuestionTypeList[]=textentryvalidated
 */ ?>
