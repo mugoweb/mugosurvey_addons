@@ -55,6 +55,10 @@ MUGOSURVEY_ADDONS EXTENSION V2.1
     Valid codes can be entered by the editor separated by a comma.
     Validation is case insensitive.
     The field can be prefilled using a (code) view parameter.
+    
+    * The Question / Answer question type enables you to build "quiz" like surveys.
+    As an editor you can create multiple-choice questions and also specify what are the correct answers.
+    Please check questionanswer_note.txt for more information about how to change ezsurvey.tpl so when the user has filled in the quiz, they are presented with a list of results showing whether they chose the correct answers.
 
 REQUIREMENTS
 ======================
@@ -214,9 +218,4 @@ NOTES
     extension/ezsurvey/design/standard/templates/ezsurvey/result_list.tpl
     extension/ezsurvey/design/standard/templates/ezsurvey/rview.tpl
     
-    * Please check questionanswer_note.txt for more information about how to change ezsurvey.tpl to show the user results/score.
-
-
-
-
 
