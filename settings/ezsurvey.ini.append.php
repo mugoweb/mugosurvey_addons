@@ -11,4 +11,5 @@ QuestionTypeList[]=state
 QuestionTypeList[]=pagebreak
 QuestionTypeList[]=rsvpcode
 QuestionTypeList[]=textentryvalidated
+QuestionTypeList[]=questionanswer
 */ ?>
