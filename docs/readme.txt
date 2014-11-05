@@ -213,6 +213,8 @@ NOTES
     extension/ezsurvey/design/standard/templates/ezsurvey/result.tpl
     extension/ezsurvey/design/standard/templates/ezsurvey/result_list.tpl
     extension/ezsurvey/design/standard/templates/ezsurvey/rview.tpl
+    
+    * Please check questionanswer_note.txt for more information about how to change ezsurvey.tpl to show the user results/score.
 
 
 

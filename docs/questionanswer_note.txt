@@ -1,6 +1,43 @@
-If you want to show the "question / answer" results for the user, please replace:
+In order to show the "question / answer" score/results to the user, you need to:
+
+    * Set the "After Submit redirect to URL" value to empty when creating the survey, this way ezsurvey will redirect to the same page and you will be able to access the ezsurvey result in the ezsurvey.tpl.
+    * Change the design/standard/templates/content/datatype/view/ezsurvey.tpl to show the user score/results. You can do it by checking if the survey the survey validation has no errors and the result_count is greater than 1, which means survey has been already submited and is valid. You can then loop throught the results and verify all survey "QuestionAnswer" attributes and process the results, you can check you example below:
+
+#########################################################
+{if and( is_set( $survey_validation.error ), $survey_validation.error|not() )}
+  ...
+ {if $survey.result_count|gt( 1 )}
+                <p><strong>{$survey.result_count}</strong> people have entered the contest.</p>
+                <h3>Questions / Answers Results</h3>
+                {def $count=0
+                     $correct=0}
+                {foreach $survey.questions as $question}
+                    {if  $question.type|eq('QuestionAnswer')}
+                        <p><strong>{$question.text}:</strong>
+                        {set $count=inc($count)}
+                        {def $is_correct=false()
+                             $correct_answer=false()}
+                        {foreach $question.multiple_choice_answers.options as $correct_index=>$option}
+                            {if and($option.checked|eq(1), $option.toggled|eq(1) )}
+                                {set $correct=inc($correct)}
+                                {set $is_correct=true()}
+                                {set $correct_answer=$correct_index}
+                            {/if}
+                        {/foreach}
+                        {if $is_correct}
+                            correct
+                        {else}
+                            incorrect, correct answer is "{$question.multiple_choice_answers.options[$correct_answer].label|wash()}"
+                        {/if}
+                        </p>
+                    {/if}
+                {/foreach}
+#########################################################
+
+Here is a complete template example if you want to show the "question / answer" results for the user, please replace:
 
 design/standard/templates/content/datatype/view/ezsurvey.tpl
+
 With the following template code:
 
 
