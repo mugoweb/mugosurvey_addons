@@ -42,6 +42,7 @@ With the following template code:
 
 
 {ezscript_require( array( 'ezjsc::jquery', 'ezjsc::jqueryUI' ) )}
+{ezcss_require( array( 'surveyquiz.css' ) )}
 <div class="survey-view">
 {def $survey=$attribute.content.survey}
 {if is_set($attribute.content.survey_validation.one_answer_need_login)}
@@ -68,19 +69,24 @@ With the following template code:
                         <p><strong>{$question.text}:</strong>
                         {set $count=inc($count)}
                         {def $is_correct=false()
-                             $correct_answer=false()}
+                             $correct_answer=false()
+                             $selected_option=false()}
                         {foreach $question.multiple_choice_answers.options as $correct_index=>$option}
                             {if and($option.checked|eq(1), $option.toggled|eq(1) )}
                                 {set $correct=inc($correct)}
                                 {set $is_correct=true()}
+                            {/if}
+                            {if $option.checked|eq(1)}
                                 {set $correct_answer=$correct_index}
                             {/if}
+                            {if $option.toggled|eq(1)}
+                                {set $selected_option=$correct_answer}
+                            {/if}
                         {/foreach}
-                        {if $is_correct}
-                            correct
-                        {else}
-                            incorrect, correct answer is "{$question.multiple_choice_answers.options[$correct_answer].label|wash()}"
-                        {/if}
+                            <p>
+                                <strong>Your answer:</strong> <span class="quiz-{if $is_correct}correct{else}wrong{/if}">"{$question.multiple_choice_answers.options[$selected_option].label}"</span><br />
+                                <strong>Correct answer:</strong> "{$question.multiple_choice_answers.options[$correct_answer].label|wash()}"
+                            </p>
                         </p>
                     {/if}
                 {/foreach}

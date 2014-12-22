@@ -1,0 +1,29 @@
+.quiz-correct:before
+{
+    content:'\2713';
+    display:inline-block;
+    color:green;
+    padding:0 5px;
+    font-weight: bold;
+}
+
+.quiz-wrong:before
+{
+    content:'x';
+    display:inline-block;
+    color:red;
+    padding:0 5px;
+    font-weight: bold;
+}
+
+.quiz-correct
+{
+    color:green;
+    font-weight: bold;
+}
+
+.quiz-wrong
+{
+    color:red;
+    font-weight: bold;
+}
