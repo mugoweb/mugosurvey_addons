@@ -7,7 +7,6 @@ In order to show the "question / answer" score/results to the user, you need to:
 {if and( is_set( $survey_validation.error ), $survey_validation.error|not() )}
   ...
  {if $survey.result_count|gt( 1 )}
-                <p><strong>{$survey.result_count}</strong> people have entered the contest.</p>
                 <h3>Questions / Answers Results</h3>
                 {def $count=0
                      $correct=0}
@@ -60,7 +59,6 @@ With the following template code:
             </div>
             {* Display the number of answers and the average answer to all but the first participant *}
             {if $survey.result_count|gt( 1 )}
-                <p><strong>{$survey.result_count}</strong> people have entered the contest.</p>
                 <h3>Questions / Answers Results</h3>
                 {def $count=0
                      $correct=0}
